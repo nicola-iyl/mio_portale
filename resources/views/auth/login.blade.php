@@ -22,35 +22,44 @@
    @stack('head')
 </head>
 
-<body>
-<h1>Login</h1>
+<body class="gray-bg">
+   <div class="middle-box text-center loginscreen animated fadeInDown">
+      <div>
+         <div><h1 class="logo-name" style="font-size:140px">NT</h1></div>
+         <h3>Tomo Sapiens</h3>
+
+         <form class="m-t" role="form" method="POST" action="{{ route('login.exec') }}">
+
+            {{ csrf_field() }}
+
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+               <input type="email" class="form-control" placeholder="E-Mail" name="email" value="{{ old('email') }}" required autofocus >
+               @if ($errors->has('email'))<span class="help-block text-danger"><strong>{{ $errors->first('email') }}</strong></span>@endif
+            </div>
+
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+               <input type="password" class="form-control" placeholder="Password" name="password" required>
+               @if ($errors->has('password'))<span class="help-block text-danger"><strong>{{ $errors->first('password') }}</strong></span>@endif
+            </div>
+
+            <div class="form-group">
+               <label> <input type="checkbox" class="i-checks" name="remember"> Ricordami </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+         </form>
+         <div>
+            @include('partials.flash_message')
+         </div>
+         <p class="m-t">
+            <small>Nicola Tamburini &copy; {{ date('Y') }}</small>
+         </p>
+      </div>
+   </div>
 
 @section('scripts')
-   <script src="{{ env('APP_ROOT') }}js/jquery-3.1.1.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/popper.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/bootstrap.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/metisMenu/jquery.metisMenu.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/dataTables/datatables.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/summernote/summernote-bs4.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/validate/jquery.validate.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/dropzone/dropzone.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/sweetalert/sweetalert.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/select2/select2.full.min.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/datapicker/bootstrap-datepicker.js"></script>
-
-   <!-- Custom and plugin javascript -->
-   <script src="{{ env('APP_ROOT') }}js/inspinia.js"></script>
-   <script src="{{ env('APP_ROOT') }}js/plugins/pace/pace.min.js"></script>
-
-   <!-- Sparkline -->
-   <script src="{{ env('APP_ROOT') }}js/plugins/sparkline/jquery.sparkline.min.js"></script>
-
-   <script src="{{ env('APP_ROOT') }}js/cms.js"></script>
+   <script src="/js/jquery-3.1.1.min.js"></script>
 @show
-@yield('js_script')
 @stack('body')
 </body>
 

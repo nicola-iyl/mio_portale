@@ -18,7 +18,7 @@ use App\Http\Controllers\Web\HomeController;
 
 
 Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.exec');
 Route::get('logs', [LogViewerController::class, 'index'])->name('logs');
 
 // SOLO AUTENTICATI
