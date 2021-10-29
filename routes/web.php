@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Rap2hpoutre\LaravelLogViewer\LogViewerController;
+use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('logs', [LogViewerController::class, 'index'])->name('logs');
+
+// SOLO AUTENTICATI
+Route::group(['middleware' => ['auth']], function () {
+   Route::get('/', [HomeController::class,'index'])->name('home');
 });
+
+
+
