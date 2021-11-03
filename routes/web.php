@@ -23,6 +23,7 @@ Route::get('logs', [LogViewerController::class, 'index'])->name('logs');
 
 // SOLO AUTENTICATI
 Route::group(['middleware' => ['auth']], function () {
+   Route::get('/logout',  [AuthController::class, 'logout'])->name('logout');
    Route::get('/', [HomeController::class,'index'])->name('home');
 });
 

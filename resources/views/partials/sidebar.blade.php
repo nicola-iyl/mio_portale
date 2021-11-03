@@ -1,1 +1,42 @@
-<?php
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" style="padding-left:0px;">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span><img alt="" class="img-circle" src="{{ env('APP_ROOT') }}images/logo_cms.png"/></span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs"><strong class="font-bold">TOMO SAPIENS</strong></span>
+                            <span class="text-muted text-xs block">{{ Auth::user()->name }}<b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">ID+</div>
+            </li>
+        </ul>
+        @section('sidebar-menu')
+            <ul class="nav metismenu" id="side-menu" style="padding-left:0px;">
+                <li class="{{ (Route::currentRouteName() == 'dashboard') ? "active" : "" }}">
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-th-large"></i>
+                        <span class="nav-label">DASHBOARD</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-th-large"></i> <span class="nav-label">PROGRAMMAZIONE</span> <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        @foreach($macrocategories as $cat)
+                            <li><a href="index.html">{{$cat->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            </ul>
+
+        @show
+    </div>
+</nav>

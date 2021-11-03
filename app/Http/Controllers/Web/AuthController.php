@@ -61,6 +61,16 @@ class AuthController extends Controller
       return view('auth.login', $params);
    }
 
+   public function logout(Request $request): RedirectResponse
+   {
+      Auth::guard()->logout();
+
+      $request->session()->invalidate();
+      $request->session()->regenerateToken();
+
+      return redirect()->route('login');
+   }
+
    //controlla se ha effettuato troppi tentativi di login
    protected function hasTooManyLoginAttempts(Request $request): bool
    {

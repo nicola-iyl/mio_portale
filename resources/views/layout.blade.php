@@ -46,7 +46,7 @@
 <!-- FINE MODALE -->
 
 @include('partials.loader')
-@include('partials.popup')
+@include('partials.img_popup')
 
 @section('scripts')
     <script src="{{ env('APP_ROOT') }}js/jquery-3.1.1.min.js"></script>
