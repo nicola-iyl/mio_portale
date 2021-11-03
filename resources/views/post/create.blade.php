@@ -33,9 +33,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class="d-block">
-                                            Titolo*
-                                        </label>
+                                        <label class="d-block">Titolo*</label>
                                         <input type="text" name="name" id="name" class="form-control mb-2" />
                                     </div>
                                 </div>
@@ -43,20 +41,21 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Testo*</label>
-                                        <textarea name="desc" id="desc"  class="form-control mb-2" ></textarea>
+                                        <label class="d-block">Tags</label>
+                                        <select id="tags" name="tags[]" class="select_tags form-control" multiple="multiple">
+                                            @foreach($tags as $tag)
+                                                <option value="{{$tag->name}}">{{$tag->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class="d-block">
-                                            Tags
-                                        </label>
-                                        <textarea name="tags" id="tags"  class="form-control mb-2" ></textarea>
+                                        <label>Testo*</label>
+                                        <textarea name="desc" id="desc" rows="15" class="form-control mb-2" ></textarea>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="form-group">
@@ -69,11 +68,8 @@
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -81,6 +77,13 @@
     </div>
 @endsection
 @section('js_script')
+    <!-- per la select multipla -->
+    <script>
+        $(".select_tags").select2({
+            theme: 'bootstrap4',
+        });
+    </script>
+    <!-- -->
     <script>
         $("#{{$form_name}}").validate({
             rules: {

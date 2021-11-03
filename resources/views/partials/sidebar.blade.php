@@ -35,6 +35,12 @@
                         @endforeach
                     </ul>
                 </li>
+                <li class="{{ (Route::currentRouteName() == 'tags') ? "active" : "" }}">
+                    <a href="{{route('tags')}}">
+                        <i class="fa fa-th-large"></i>
+                        <span class="nav-label">TAGS</span>
+                    </a>
+                </li>
             </ul>
 
         @show
