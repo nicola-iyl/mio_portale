@@ -3,7 +3,7 @@
         <ul class="nav metismenu" style="padding-left:0px;">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <span><img alt="" class="img-circle" src="{{ env('APP_ROOT') }}images/logo_cms.png"/></span>
+                    <span><img alt="" class="img-circle" src="/images/logo_cms.png"/></span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs"><strong class="font-bold">TOMO SAPIENS</strong></span>
@@ -31,7 +31,7 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
                         @foreach($macrocategories as $cat)
-                            <li><a href="index.html">{{$cat->name}}</a></li>
+                            <li><a href="{{route('category',['id'=>$cat->id])}}">{{$cat->name}}</a></li>
                         @endforeach
                     </ul>
                 </li>

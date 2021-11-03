@@ -49,29 +49,29 @@
 @include('partials.img_popup')
 
 @section('scripts')
-    <script src="{{ env('APP_ROOT') }}js/jquery-3.1.1.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/popper.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/bootstrap.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/dataTables/datatables.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/summernote/summernote-bs4.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/validate/jquery.validate.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/dropzone/dropzone.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/select2/select2.full.min.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="/js/plugins/summernote/summernote-bs4.js"></script>
+    <script src="/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/plugins/dropzone/dropzone.js"></script>
+    <script src="/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+    <script src="/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="/js/plugins/select2/select2.full.min.js"></script>
+    <script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="{{ env('APP_ROOT') }}js/inspinia.js"></script>
-    <script src="{{ env('APP_ROOT') }}js/plugins/pace/pace.min.js"></script>
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
 
     <!-- Sparkline -->
-    <script src="{{ env('APP_ROOT') }}js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
-    <script src="{{ env('APP_ROOT') }}js/cms.js"></script>
+    <script src="/js/cms.js"></script>
 @show
 @yield('js_script')
 @stack('body')
