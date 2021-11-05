@@ -97,6 +97,11 @@ class PostController extends Controller
 
    public function delete($id)
    {
-
+      $post = Post::find($id);
+      if(!$post){
+         return back()->with('error','Elemento non trovato');
+      }
+      $post->delete();
+      return back()->with('success','Elemento eliminato con successo');
    }
 }

@@ -36,4 +36,14 @@ class Post extends Model
    {
       return $this->hasMany(Script::class);
    }
+
+   public function links()
+   {
+      return $this->hasMany(Link::class);
+   }
+
+   public function videos()
+   {
+      return $this->hasMany(Video::class);
+   }
 }

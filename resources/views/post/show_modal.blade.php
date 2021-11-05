@@ -13,13 +13,31 @@
                         <button class="btn btn-white btn-xs" type="button">{{$tag}}</button>
                     @endforeach
                 </div>
-                {{$post->desc}}
+                <div class="ibox">{{$post->desc}}</div>
                 @if($post->scripts->count() > 0)
                     <div class="ibox">
                         @foreach($post->scripts as $script)
-                            <div class="ibox-content">
+                            <div class="ibox-content mb-2">
                                 <p>{{$script->desc}}</p>
-                                <div><pre><code>{{$script->code}}</code></pre></div>
+                                <div><code><pre>{{$script->code}}</pre></code></div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                @if($post->links->count() > 0)
+                    <div class="ibox ">
+                        @foreach($post->links as $item)
+                            <div class="ibox-content mb-2">
+                                {{$item->name}}: <strong><a href="{{$item->url}}" target="_blank">{{$item->url}}</a></strong>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                @if($post->videos->count() > 0)
+                    <div class="ibox ">
+                        @foreach($post->videos as $item)
+                            <div class="ibox-content mb-2">
+                                {{$item->name}}: <strong><a href="{{$item->link}}" target="_blank">{{$item->link}}</a></strong>
                             </div>
                         @endforeach
                     </div>
@@ -36,3 +54,8 @@
     </div>
 
 </div>
+<script>
+    document.querySelectorAll('code pre').forEach((el) => {
+        hljs.highlightElement(el);
+    });
+</script>

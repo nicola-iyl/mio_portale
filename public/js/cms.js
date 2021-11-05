@@ -63,3 +63,28 @@ function get_modal(url)
         }
     });
 }
+
+//Per il Pulsante ELIMINA
+$(document).ready(function()
+{
+    $('.elimina').click(function (e)
+    {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        swal({
+            title: "Sei sicuro?",
+            text: "Sarà impossibile recuperare il file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sì, elimina!",
+            closeOnConfirm: false
+        }, function ()
+        {
+            showPreloader();
+            location.href = url;
+        });
+    });
+});
+//Fine Pulsante ELIMINA

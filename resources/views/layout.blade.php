@@ -74,7 +74,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 
     <script src="/js/cms.js"></script>
-    <script>hljs.highlightAll();</script>
+    <!--<script>hljs.highlightAll();</script>-->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('code pre').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+    </script>
 @show
 @yield('js_script')
 @stack('body')

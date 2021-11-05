@@ -8,6 +8,8 @@ use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\PostController;
 use App\Http\Controllers\Web\TagsController;
 use App\Http\Controllers\Web\ScriptController;
+use App\Http\Controllers\Web\LinkController;
+use App\Http\Controllers\Web\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +46,15 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/tags/create',[TagsController::class,'create'])->name('tags.create');
    Route::get('/tags/delete/{id}',[TagsController::class,'delete'])->name('tags.delete');
    Route::post('/tags',[TagsController::class,'store'])->name('tags.store');
-   Route::get('script/create/{post_id}',[ScriptController::class,'create'])->name('script.create');
-   Route::post('script',[ScriptController::class, 'store'])->name('script.store');
+   Route::get('/script/create/{post_id}',[ScriptController::class,'create'])->name('script.create');
+   Route::post('/script',[ScriptController::class, 'store'])->name('script.store');
+   Route::get('/script/delete/{id}',[ScriptController::class,'delete'])->name('script.delete');
+   Route::get('/video/create/{post_id}',[VideoController::class,'create'])->name('video.create');
+   Route::post('video',[VideoController::class, 'store'])->name('video.store');
+   Route::get('/video/delete/{id}',[VideoController::class,'delete'])->name('video.delete');
+   Route::get('/link/create/{post_id}',[LinkController::class,'create'])->name('link.create');
+   Route::post('/link',[LinkController::class, 'store'])->name('link.store');
+   Route::get('/link/delete/{id}',[LinkController::class,'delete'])->name('link.delete');
 });
 
 

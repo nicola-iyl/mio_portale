@@ -32,4 +32,14 @@ class ScriptController extends Controller
           return ['result' => 0, 'msg' => $e->getMessage()];
        }
     }
+
+    public function delete($id)
+    {
+       $script = Script::find($id);
+       if(!$script){
+          return back()->with('error','Elemento non trovato');
+       }
+       $script->delete();
+       return back()->with('success','Elemento eliminato con successo');
+    }
 }
