@@ -35,9 +35,11 @@
                         <table id="table-categories" style="font-size:12px" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>Id</th>
+                                <th style="width:20px;"></th>
+                                <th style="max-width:40px;">Id</th>
                                 <th>Titolo</th>
                                 <th>Data</th>
+                                <th data-orderable="false"></th>
                                 <th data-orderable="false"></th>
                                 <th data-orderable="false"></th>
                             </tr>
@@ -45,9 +47,13 @@
                             <tbody>
                                 @foreach($category->posts as $post)
                                     <tr>
-                                        <td>{{$post->id}}</td>
-                                        <td>{{$post->name}}</td>
+                                        <td style="width:20px;">
+                                            <a href="javascript:void(0)" onclick="get_modal('{{route('post',['id'=>$post->id])}}')"><i class="fa fa-search fa-2x text-primary"></i></a>
+                                        </td>
+                                        <td style="max-width:40px;">{{$post->id}}</td>
+                                        <td><a href="{{route('post',['id'=>$post->id])}}">{{$post->name}}</a></td>
                                         <td>{{$post->created_at->format('d/m/Y')}}</td>
+                                        <td><a class="btn btn-primary" href="javascript:void(0)" onclick="get_modal('{{route('script.create',['post_id' => $post->id])}}')"> + CODICE</a></td>
                                         <td><a href=""><i class="fa fa-edit fa-2x"></i> </a></td>
                                         <td><a href=""><i class="fa fa-trash fa-2x text-danger"></i> </a></td>
                                     </tr>

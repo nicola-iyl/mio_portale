@@ -16,8 +16,33 @@ class PostController extends Controller
       return view('post.index', $params);
    }
 
-   public function show($id)
+   public function show(Request $request, $id)
    {
+      $post = Post::find($id);
+      if($request->ajax())
+      {
+         $params = [
+            'post' => $post,
+         ];
+         return view('post.show_modal',$params);
+      }
+      else
+      {
+         if(!$post){ return back()->with('error','elemento non trovato'); }
+         $title_page = $post->name;
+         $params = [
+            'post' => $post,
+            'title_page' => $title_page,
+         ];
+         return view('post.show',$params);
+      }
+
+   }
+
+   public function show_on_modal($id)
+   {
+      $post = Post::find($id);
+      if(!$post){ }
 
    }
 

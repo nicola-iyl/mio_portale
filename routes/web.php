@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\PostController;
 use App\Http\Controllers\Web\TagsController;
+use App\Http\Controllers\Web\ScriptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/tags/create',[TagsController::class,'create'])->name('tags.create');
    Route::get('/tags/delete/{id}',[TagsController::class,'delete'])->name('tags.delete');
    Route::post('/tags',[TagsController::class,'store'])->name('tags.store');
+   Route::get('script/create/{post_id}',[ScriptController::class,'create'])->name('script.create');
+   Route::post('script',[ScriptController::class, 'store'])->name('script.store');
 });
 
 

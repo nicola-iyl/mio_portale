@@ -17,6 +17,7 @@
         <link href="/css/style.css" rel="stylesheet" >
         <link href="/css/font-awesome.css" rel="stylesheet" >
         <link href="/css/custom.css" rel="stylesheet" >
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
     @show
 
     @stack('head')
@@ -70,8 +71,10 @@
 
     <!-- Sparkline -->
     <script src="/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 
     <script src="/js/cms.js"></script>
+    <script>hljs.highlightAll();</script>
 @show
 @yield('js_script')
 @stack('body')

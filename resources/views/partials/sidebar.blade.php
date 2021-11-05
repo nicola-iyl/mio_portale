@@ -29,9 +29,9 @@
                     <a href="#">
                         <i class="fa fa-th-large"></i> <span class="nav-label">PROGRAMMAZIONE</span> <span class="fa arrow"></span>
                     </a>
-                    <ul class="nav nav-second-level collapse">
+                    <ul class="nav nav-second-level collapse {{(request()->is('category/*')) ? 'in' : ''}}">
                         @foreach($macrocategories as $cat)
-                            <li><a href="{{route('category',['id'=>$cat->id])}}">{{$cat->name}}</a></li>
+                            <li><a href="{{route('category',['id'=>$cat->id])}}">{{$cat->name}} {{request()->route('name')}}</a></li>
                         @endforeach
                     </ul>
                 </li>

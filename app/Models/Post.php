@@ -22,4 +22,18 @@ class Post extends Model
       'desc',
       'tags'
    ];
+
+   public function getTags()
+   {
+      $tags = [];
+      if($this->tags != ''){
+         $tags = explode(',', $this->tags);
+      }
+      return $tags;
+   }
+
+   public function scripts()
+   {
+      return $this->hasMany(Script::class);
+   }
 }
