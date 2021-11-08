@@ -86,13 +86,52 @@ class PostController extends Controller
 
    public function edit($id)
    {
-      $params = [];
+      $post = Post::find($id);
+      if(!$post){ return back()->with('error','Elemento non trovato'); }
+      $categories = Category::all();
+      $tags_array = [];
+      if($post->tags != '')
+      {
+         $tags_array = explode(',',$post->tags);
+      }
+
+      $tags = Tag::all();
+      $params = [
+         'categories' => $categories,
+         'post' => $post,
+         'tags' => $tags,
+         'tags_array' => $tags_array,
+         'form_name'  => 'form_post_update'
+      ];
       return view('post.edit', $params);
    }
 
    public function update(Request $request, $id)
    {
+      $post = Post::find($id);
+      if(!$post){   return ['result' => 0, 'msg' => 'Elemento non trovato']; }
+      $request->validate(['name' => 'required|string', 'desc' => 'required|string', 'category_id' => 'required']);
 
+      $tags_array = $request->get('tags');
+      $tags = '';
+      if(is_array($tags_array) && count($tags_array) > 0){
+         $tags = implode(",",$tags_array);
+      }
+
+      try
+      {
+         $post->category_id = $request->get('category_id');
+         $post->name = $request->get('name');
+         $post->desc = $request->get('desc');
+         $post->tags = $tags;
+         $post->save();
+
+         return ['result' => 1, 'msg' => 'Elemento aggiornato con successo','url'=> route('post',['id' => $post->id])];
+      }
+      catch(\Exception $e)
+      {
+         return ['result' => 0, 'msg' => $e->getMessage()];
+      }
    }
 
    public function delete($id)

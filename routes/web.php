@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/post/edit/{id}',[PostController::class,'edit'])->name('post.edit');
    Route::get('/post/{id}',[PostController::class,'show'])->name('post');
    Route::post('/post',[PostController::class,'store'])->name('post.store');
-   Route::post('/post/update',[PostController::class,'update'])->name('post.update');
+   Route::post('/post/update/{id}',[PostController::class,'update'])->name('post.update');
    Route::get('/tags',[TagsController::class,'index'])->name('tags');
    Route::get('/tags/create',[TagsController::class,'create'])->name('tags.create');
    Route::get('/tags/delete/{id}',[TagsController::class,'delete'])->name('tags.delete');
