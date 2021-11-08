@@ -8,9 +8,19 @@
                     <!-- header del box -->
                     <div class="ibox-title" style="padding-right:15px">
                         <div class="row">
-                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <a class="btn btn-w-m btn-primary" href="javascript:void(0)" onclick="get_modal('{{route('link.create',['post_id' => $post->id])}}')">
+                                    Link
+                                </a>
+                                <a class="btn btn-w-m btn-primary" href="javascript:void(0)" onclick="get_modal('{{route('video.create',['post_id' => $post->id])}}')">
+                                    Video
+                                </a>
+                                <a class="btn btn-w-m btn-primary" href="javascript:void(0)" onclick="get_modal('{{route('script.create',['post_id' => $post->id])}}')">
+                                    Script
+                                </a>
+                            </div>
                             <div class="col-md-6 text-right">
-                                <a href="{{ url()->previous() }}" class="btn btn-w-m btn-primary ">Indietro</a>
+                                <a href="{{ route('category',['id' => $post->category_id]) }}" class="btn btn-w-m btn-primary ">Indietro</a>
                             </div>
                         </div>
                     </div>
@@ -35,6 +45,8 @@
                             </h2>
                         </div>
                         <p>{{$post->desc}}</p>
+
+                        <!-- Gli Script -->
                         @if($post->scripts->count() > 0)
                             <div class="ibox ">
                                 @foreach($post->scripts as $script)
@@ -46,6 +58,8 @@
                                 @endforeach
                             </div>
                         @endif
+
+                        <!-- I Link -->
                         @if($post->links->count() > 0)
                             <div class="ibox ">
                                 @foreach($post->links as $item)
@@ -57,6 +71,8 @@
                                 @endforeach
                             </div>
                         @endif
+
+                        <!-- I Video Link -->
                         @if($post->videos->count() > 0)
                             <div class="ibox ">
                                 @foreach($post->videos as $item)
@@ -70,36 +86,6 @@
                         @endif
 
                         <hr>
-                        <div class="row">
-                            <div class="col-lg-12">
-
-                                <h2>Comments:</h2>
-                                <div class="social-feed-box">
-                                    <div class="social-avatar">
-                                        <a href="" class="float-left">
-                                            <img alt="image" src="img/a1.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <a href="#">
-                                                Andrew Williams
-                                            </a>
-                                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                        </div>
-                                    </div>
-                                    <div class="social-body">
-                                        <p>
-                                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                            default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                            default model text.
-                                        </p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
             </div>
