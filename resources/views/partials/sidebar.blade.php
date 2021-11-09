@@ -46,7 +46,7 @@
                         <li><a href="{{route('work_hours')}}">Ore</a></li>
                     </ul>
                 </li>
-                <!--<li>
+                <li>
                     <a href="#">
                         <i class="fa fa-th-large"></i> <span class="nav-label">SINCRONIZZAZIONE</span> <span class="fa arrow"></span>
                     </a>
@@ -55,8 +55,9 @@
                         <li><a href="{{route('sync.work_hours')}}">Tabella WorkHours</a></li>
                         <li><a href="{{route('sync.invoices')}}">Tabella Invoices</a></li>
                         <li><a href="{{route('sync.invoice_items')}}">Tabella InvoiceItems</a></li>
+                        <li><a href="{{route('sync.customers')}}">Tabella Customers</a></li>
                     </ul>
-                </li>-->
+                </li>
                 <li class="{{ (Route::currentRouteName() == 'tags') ? "active" : "" }}">
                     <a href="{{route('tags')}}">
                         <i class="fa fa-th-large"></i>

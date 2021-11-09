@@ -113,4 +113,26 @@ class SyncController extends Controller
       }
       return back()->with('success', 'Tabella aggiornata con successo!');
    }
+
+   public function syncCustomers()
+   {
+      \DB::table('customers')->truncate();
+      $vecchi = \DB::table('t_clienti')->get();
+
+      foreach ($vecchi as $data) {
+         try {
+            $item = new Customer();
+            $item->id = $data->ClienteId;
+            $item->ragione_sociale = $data->Ragione;
+            $item->p_iva = $data->Iva;
+            $item->indirizzo = $data->Indirizzo;
+            $item->tel = $data->Telefono;
+            $item->save();
+
+         } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+         }
+      }
+      return back()->with('success', 'Tabella aggiornata con successo!');
+   }
 }

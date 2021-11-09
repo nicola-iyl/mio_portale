@@ -84,11 +84,13 @@ Route::group(['middleware' => ['auth']], function () {
    Route::post('/work_hour',[WorkHourController::class,'store'])->name('work_hour.store');
    Route::post('/work_hour/update/{id}',[WorkHourController::class,'update'])->name('work_hour.update');
    Route::get('/invoices',[InvoiceController::class,'index'])->name('invoices');
+   Route::get('/invoices/all',[InvoiceController::class,'all'])->name('invoices.all');
    Route::get('/invoice/create',[InvoiceController::class,'create'])->name('invoice.create');
    Route::get('/invoice/delete/{id}',[InvoiceController::class,'delete'])->name('invoice.delete');
    Route::get('/invoice/edit/{id}',[InvoiceController::class,'edit'])->name('invoice.edit');
    Route::get('/invoice/{id}',[InvoiceController::class,'show'])->name('invoice');
    Route::post('/invoice',[InvoiceController::class,'store'])->name('invoice.store');
+   Route::get('/invoice/pdf/{id}',[InvoiceController::class,'pdf'])->name('invoice.pdf');
    Route::post('/invoice/update/{id}',[InvoiceController::class,'update'])->name('invoice.update');
    Route::get('/invoice_items',[InvoiceItemController::class,'index'])->name('invoice_items');
    Route::get('/invoice_item/create',[InvoiceItemController::class,'create'])->name('invoice_item.create');
@@ -101,6 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/sync/sync_work_hours', [SyncController::class,'syncWorkHours'])->name('sync.work_hours');
    Route::get('/sync/sync_invoices', [SyncController::class,'syncInvoices'])->name('sync.invoices');
    Route::get('/sync/sync_invoice_items', [SyncController::class,'syncInvoiceItems'])->name('sync.invoice_items');
+   Route::get('/sync/sync_customers', [SyncController::class,'syncCustomers'])->name('sync.customers');
 });
 
 

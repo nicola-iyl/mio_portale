@@ -32,6 +32,7 @@ class CreateCategoriesTable extends Migration
             ['name' => 'Angular', 'created_at' => DB::raw('CURRENT_TIMESTAMP')],
             ['name' => 'Vue', 'created_at' => DB::raw('CURRENT_TIMESTAMP')],
             ['name' => 'Html', 'created_at' => DB::raw('CURRENT_TIMESTAMP')],
+            ['name' => 'Javascript', 'created_at' => DB::raw('CURRENT_TIMESTAMP')],
          ]
       );
    }

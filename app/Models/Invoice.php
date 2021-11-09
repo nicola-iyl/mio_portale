@@ -20,6 +20,8 @@ class Invoice extends Model
 {
    use HasFactory;
 
+   protected $dates = ['data'];
+
    protected $fillable = [
       'id',
       'data',

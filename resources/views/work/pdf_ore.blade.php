@@ -14,7 +14,7 @@
 
     </style>
 </head>
-<body style="text-align: center;width:100%">
+<body style="text-align: center;width:100%;font-family:sans-serif;">
 <div style="width:100%;padding:20px">
     <table id="tb_wrapper" style="width:100%" cellpadding="2" cellspacing="2">
         <tr>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th id="testata">
-                <h3 style="margin-bottom: 30px">Ore Lavoro {{ $work->name }}</h3>
+                <h3 style="margin-bottom: 30px">Ore lavoro per <br>{{ $work->name }}</h3>
             </th>
         </tr>
 
@@ -31,9 +31,8 @@
             <td>
                 <table width="100%" cellpadding="2" cellspacing="0" style="font-size: 12px;">
                     <tr>
-                        <th>Id</th>
-                        <th>Data</th>
-                        <th>Desc</th>
+                        <th style="text-align: left">Data</th>
+                        <th style="text-align: left">Descrizione</th>
                         <th>Q.tà</th>
                         <th></th>
                         <th></th>
@@ -41,9 +40,6 @@
                     @foreach($hours as $item)
                         <tr>
                             <td style="border-bottom:1px solid #ddd;padding-bottom: 6px;padding-top: 6px;">
-                                {{$item->id}}
-                            </td>
-                            <td>
                                 {{($item->data != '') ? $item->data->format('d/m/Y') : ''}}
                             </td>
                             <td style="border-bottom:1px solid #ddd;padding-bottom: 6px;padding-top: 6px;">
@@ -60,6 +56,9 @@
                     @endforeach
                 </table>
             </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 20px;">TOTALE ORE : {{$work->oreLavorate()}}</td>
         </tr>
 
 

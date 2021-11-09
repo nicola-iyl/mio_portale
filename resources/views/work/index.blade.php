@@ -47,7 +47,7 @@
                                     <td><h3 class="mb-0 mt-0">{{$work->name}}</h3></td>
                                     <td>{{ $work->oreLavorate() }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="{{route('work.pdf_ore',['id'=> $work->id])}}">pdf ore</a>
+                                        <a class="btn btn-sm btn-primary" target="_blank" href="{{route('work.pdf_ore',['id'=> $work->id])}}">pdf ore</a>
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="">aggiungi ore</a>
