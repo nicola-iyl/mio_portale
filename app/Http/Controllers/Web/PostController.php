@@ -39,13 +39,6 @@ class PostController extends Controller
 
    }
 
-   public function show_on_modal($id)
-   {
-      $post = Post::find($id);
-      if(!$post){ }
-
-   }
-
    public function create()
    {
       $categories = Category::all();
@@ -95,13 +88,15 @@ class PostController extends Controller
          $tags_array = explode(',',$post->tags);
       }
 
+      $title_page = 'Modifica '.$post->name;
       $tags = Tag::all();
       $params = [
          'categories' => $categories,
          'post' => $post,
          'tags' => $tags,
          'tags_array' => $tags_array,
-         'form_name'  => 'form_post_update'
+         'form_name'  => 'form_post_update',
+         'title_page' => $title_page
       ];
       return view('post.edit', $params);
    }

@@ -18,6 +18,9 @@
                                 <a class="btn btn-w-m btn-primary" href="javascript:void(0)" onclick="get_modal('{{route('script.create',['post_id' => $post->id])}}')">
                                     Script
                                 </a>
+                                <a class="btn btn-w-m btn-primary" href="{{route('post.edit',['id'=>$post->id])}}" >
+                                    Modifica
+                                </a>
                             </div>
                             <div class="col-md-6 text-right">
                                 <a href="{{ route('category',['id' => $post->category_id]) }}" class="btn btn-w-m btn-primary ">Indietro</a>
