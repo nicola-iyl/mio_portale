@@ -10,6 +10,12 @@ use App\Http\Controllers\Web\TagsController;
 use App\Http\Controllers\Web\ScriptController;
 use App\Http\Controllers\Web\LinkController;
 use App\Http\Controllers\Web\VideoController;
+use App\Http\Controllers\Web\CustomerController;
+use App\Http\Controllers\Web\WorkController;
+use App\Http\Controllers\Web\InvoiceController;
+use App\Http\Controllers\Web\InvoiceItemController;
+use App\Http\Controllers\Web\WorkHourController;
+use App\Http\Controllers\Web\SyncController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +61,46 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/link/create/{post_id}',[LinkController::class,'create'])->name('link.create');
    Route::post('/link',[LinkController::class, 'store'])->name('link.store');
    Route::get('/link/delete/{id}',[LinkController::class,'delete'])->name('link.delete');
+   Route::get('/customers',[CustomerController::class,'index'])->name('customers');
+   Route::get('/customer/create',[CustomerController::class,'create'])->name('customer.create');
+   Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+   Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+   Route::get('/customer/{id}',[CustomerController::class,'show'])->name('customer');
+   Route::post('/customer',[CustomerController::class,'store'])->name('customer.store');
+   Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
+   Route::get('/works',[WorkController::class,'index'])->name('works');
+   Route::get('/work/pdf_ore/{id}',[WorkController::class,'pdfOre'])->name('work.pdf_ore');
+   Route::get('/work/create',[WorkController::class,'create'])->name('work.create');
+   Route::get('/work/delete/{id}',[WorkController::class,'delete'])->name('work.delete');
+   Route::get('/work/edit/{id}',[WorkController::class,'edit'])->name('work.edit');
+   Route::get('/work/{id}',[WorkController::class,'show'])->name('work');
+   Route::post('/work',[WorkController::class,'store'])->name('work.store');
+   Route::post('/work/update/{id}',[WorkController::class,'update'])->name('work.update');
+   Route::get('/work_hours',[WorkHourController::class,'index'])->name('work_hours');
+   Route::get('/work_hour/create',[WorkHourController::class,'create'])->name('work_hour.create');
+   Route::get('/work_hour/delete/{id}',[WorkHourController::class,'delete'])->name('work_hour.delete');
+   Route::get('/work_hour/edit/{id}',[WorkHourController::class,'edit'])->name('work_hour.edit');
+   Route::get('/work_hour/{id}',[WorkHourController::class,'show'])->name('work_hour');
+   Route::post('/work_hour',[WorkHourController::class,'store'])->name('work_hour.store');
+   Route::post('/work_hour/update/{id}',[WorkHourController::class,'update'])->name('work_hour.update');
+   Route::get('/invoices',[InvoiceController::class,'index'])->name('invoices');
+   Route::get('/invoice/create',[InvoiceController::class,'create'])->name('invoice.create');
+   Route::get('/invoice/delete/{id}',[InvoiceController::class,'delete'])->name('invoice.delete');
+   Route::get('/invoice/edit/{id}',[InvoiceController::class,'edit'])->name('invoice.edit');
+   Route::get('/invoice/{id}',[InvoiceController::class,'show'])->name('invoice');
+   Route::post('/invoice',[InvoiceController::class,'store'])->name('invoice.store');
+   Route::post('/invoice/update/{id}',[InvoiceController::class,'update'])->name('invoice.update');
+   Route::get('/invoice_items',[InvoiceItemController::class,'index'])->name('invoice_items');
+   Route::get('/invoice_item/create',[InvoiceItemController::class,'create'])->name('invoice_item.create');
+   Route::get('/invoice_item/delete/{id}',[InvoiceItemController::class,'delete'])->name('invoice_item.delete');
+   Route::get('/invoice_item/edit/{id}',[InvoiceItemController::class,'edit'])->name('invoice_item.edit');
+   Route::get('/invoice_item/{id}',[InvoiceItemController::class,'show'])->name('invoice_item');
+   Route::post('/invoice_item',[InvoiceItemController::class,'store'])->name('invoice_item.store');
+   Route::post('/invoice_item/update/{id}',[InvoiceItemController::class,'update'])->name('invoice_item.update');
+   Route::get('/sync/sync_works', [SyncController::class,'syncWorks'])->name('sync.works');
+   Route::get('/sync/sync_work_hours', [SyncController::class,'syncWorkHours'])->name('sync.work_hours');
+   Route::get('/sync/sync_invoices', [SyncController::class,'syncInvoices'])->name('sync.invoices');
+   Route::get('/sync/sync_invoice_items', [SyncController::class,'syncInvoiceItems'])->name('sync.invoice_items');
 });
 
 

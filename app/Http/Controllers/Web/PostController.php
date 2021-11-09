@@ -33,6 +33,7 @@ class PostController extends Controller
          $params = [
             'post' => $post,
             'title_page' => $title_page,
+            'open_menu' => 'programmazione',
          ];
          return view('post.show',$params);
       }

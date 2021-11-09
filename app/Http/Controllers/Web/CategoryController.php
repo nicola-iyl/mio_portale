@@ -21,6 +21,7 @@ class CategoryController extends Controller
        $title_page = 'Programmazione - '.$category->name;
        $params = [
           'category' => $category,
+          'open_menu' => 'programmazione',
           'title_page' => $title_page,
        ];
        return view('category.show', $params);
