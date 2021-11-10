@@ -4,36 +4,32 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-left">Aggiungi Lavoro</h4>
+            <h4 class="modal-title text-left">Aggiungi ore a {{$work->name}}</h4>
         </div>
         <div class="modal-body">
-            <form action="" method="post" id="form_add_work" >
+            <form action="" method="post" id="form_add_work_hour" >
                 {{ csrf_field() }}
+                <input type="hidden" name="work_id" id="work_id" value="{{$work->id}}" />
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="customer_id">Cliente</label>
-                            <select name="customer_id" id="customer_id" class="form-control" >
-                                <option value="">seleziona</option>
-                                @foreach($customers as $customer)
-                                    <option value="{{$customer->id}}">{{$customer->ragione_sociale}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <div class="col-md-6">
                             <label for="qty">Data</label>
                             <input type="date" id="data" name="data" class="form-control" />
                         </div>
-                        <div class="col-md-12">
-                            <label for="qty">Nome</label>
-                            <input type="text" id="name" name="name" class="form-control" />
-                        </div>
-                        <div class="col-md-12">
-                            <label for="qty">Descrizione</label>
-                            <input type="text" id="desc" name="desc" class="form-control" />
+                        <div class="col-md-6">
+                            <label for="qty">Tempo in H</label>
+                            <input type="text" id="qty" name="qty" class="form-control" />
                         </div>
                     </div>
 
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="desc">Descrizione</label>
+                            <input type="text" id="desc" name="desc" class="form-control" />
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -54,25 +50,26 @@
 
 </div>
 <script>
-    $("#form_add_work").validate({
+    $("#form_add_work_hour").validate({
         rules: {
-            customer_id:{required:true},
-            name:{required:true},
+            work_id:{required:true},
             desc:{required:true},
-            data:{required:true}
+            data:{required:true},
+            qty:{required:true}
+
         },
         messages: {
-            customer_id:{required:'Questo campo è obbligatorio'},
-            name:{required:'Questo campo è obbligatorio'},
+            work_id:{required:'Questo campo è obbligatorio'},
             desc:{required:'Questo campo è obbligatorio'},
-            data:{required:'Questo campo è obbligatorio'}
+            data:{required:'Questo campo è obbligatorio'},
+            qty:{required:'Questo campo è obbligatorio'}
         },
         submitHandler: function (form)
         {
             $.ajax({
                 type: "POST",
-                url: "{{route('work.store')}}",
-                data: $("#form_add_work").serialize(),
+                url: "{{route('work_hour.store')}}",
+                data: $("#form_add_work_hour").serialize(),
                 dataType: "json",
                 success: function (data)
                 {

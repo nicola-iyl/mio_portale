@@ -71,13 +71,14 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/works',[WorkController::class,'index'])->name('works');
    Route::get('/work/pdf_ore/{id}',[WorkController::class,'pdfOre'])->name('work.pdf_ore');
    Route::get('/work/create',[WorkController::class,'create'])->name('work.create');
+   Route::get('/work/change_status/{work_id}/{value}',[WorkController::class,'changeStatus'])->name('work.change_status');
    Route::get('/work/delete/{id}',[WorkController::class,'delete'])->name('work.delete');
    Route::get('/work/edit/{id}',[WorkController::class,'edit'])->name('work.edit');
    Route::get('/work/{id}',[WorkController::class,'show'])->name('work');
    Route::post('/work',[WorkController::class,'store'])->name('work.store');
    Route::post('/work/update/{id}',[WorkController::class,'update'])->name('work.update');
    Route::get('/work_hours',[WorkHourController::class,'index'])->name('work_hours');
-   Route::get('/work_hour/create',[WorkHourController::class,'create'])->name('work_hour.create');
+   Route::get('/work_hour/create/{work_id}',[WorkHourController::class,'create'])->name('work_hour.create');
    Route::get('/work_hour/delete/{id}',[WorkHourController::class,'delete'])->name('work_hour.delete');
    Route::get('/work_hour/edit/{id}',[WorkHourController::class,'edit'])->name('work_hour.edit');
    Route::get('/work_hour/{id}',[WorkHourController::class,'show'])->name('work_hour');
@@ -95,6 +96,9 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/invoice_items',[InvoiceItemController::class,'index'])->name('invoice_items');
    Route::get('/invoice_item/create',[InvoiceItemController::class,'create'])->name('invoice_item.create');
    Route::get('/invoice_item/delete/{id}',[InvoiceItemController::class,'delete'])->name('invoice_item.delete');
+   Route::post('/invoice_item/add',[InvoiceItemController::class,'additem'])->name('invoice_item.add');
+   Route::get('/invoice_item/add_item',[InvoiceItemController::class,'showFormAddItem'])->name('invoice_item.add_item');
+
    Route::get('/invoice_item/edit/{id}',[InvoiceItemController::class,'edit'])->name('invoice_item.edit');
    Route::get('/invoice_item/{id}',[InvoiceItemController::class,'show'])->name('invoice_item');
    Route::post('/invoice_item',[InvoiceItemController::class,'store'])->name('invoice_item.store');
