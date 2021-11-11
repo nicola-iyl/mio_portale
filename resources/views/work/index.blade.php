@@ -62,11 +62,11 @@
                                         <a class="elimina" href="{{route('work.delete',['id'=> $work->id])}}"><i class="fa fa-trash fa-2x text-danger"></i> </a>
                                     </td>
                                     <td>
-                                        <select id="select-fatturato" name="select-fatturato">
-                                            <option value="0" >NO</option>
-                                            <option value="2" >SI</option>
+                                        <select id="select-fatturato_{{$work->id}}" name="select-fatturato">
+                                            <option value="0" {{($work->status == 0) ? 'selected' : ''}} >NO</option>
+                                            <option value="2" {{($work->status == 2) ? 'selected' : ''}} >SI</option>
                                         </select>
-                                        <button onclick="changeStatus()" class="btn btn-sm btn-success">Aggiorna</button>
+                                        <button onclick="changeStatus({{$work->id}})" class="btn btn-sm btn-success">Aggiorna</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -81,14 +81,13 @@
 @endsection
 @section('js_script')
     <script>
-        function changeStatus()
+        function changeStatus(id)
         {
-            let value = $('#select-fatturato').val();
-            alert($('#select-fatturato').val());
-            return
+            let value = $('#select-fatturato_'+id).val();
+
             $.ajax({
                 type: "GET",
-                url: "/work/change_status/{{$work->id}}/"+value,
+                url: "/work/change_status/"+id+"/"+value,
                 data:{},
                 dataType: "json",
                 success: function (data)

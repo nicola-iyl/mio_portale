@@ -141,10 +141,10 @@ class WorkController extends Controller
       if(!$work){
          return ['result' => 0, 'msg' => 'Elemento non trovato'];
       }
-      echo $value;
-      exit();
+
       $work->status = $value;
       $work->save();
+
       return ['result' => 1, 'msg' => 'Elemento aggiornato con successo'];
    }
 }
