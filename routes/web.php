@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\InvoiceController;
 use App\Http\Controllers\Web\InvoiceItemController;
 use App\Http\Controllers\Web\WorkHourController;
 use App\Http\Controllers\Web\SyncController;
+use App\Http\Controllers\Web\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/logout',  [AuthController::class, 'logout'])->name('logout');
    Route::get('/', [HomeController::class,'index'])->name('home');
    Route::get('/categories',[CategoryController::class,'index'])->name('categories');
-   Route::get('/category/{id}',[CategoryController::class,'show'])->name('category');
    Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+   Route::get('/category/{id}',[CategoryController::class,'show'])->name('category');
    Route::post('category',[CategoryController::class,'store'])->name('category.store');
    Route::get('/posts',[PostController::class,'index'])->name('posts');
    Route::get('/post/create',[PostController::class,'create'])->name('post.create');
@@ -108,6 +109,8 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/sync/sync_invoices', [SyncController::class,'syncInvoices'])->name('sync.invoices');
    Route::get('/sync/sync_invoice_items', [SyncController::class,'syncInvoiceItems'])->name('sync.invoice_items');
    Route::get('/sync/sync_customers', [SyncController::class,'syncCustomers'])->name('sync.customers');
+
+   Route::get('/search/search_post', [SearchController::class,'searchPost'])->name('search.post');
 });
 
 

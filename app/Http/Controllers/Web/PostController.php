@@ -12,7 +12,12 @@ class PostController extends Controller
 {
    public function index()
    {
-      $params = [];
+      $posts = Post::all();
+      $params = [
+         'title_page' => 'Tutti i post',
+         'open_menu'  => 'programmazione',
+         'posts' => $posts
+      ];
       return view('post.index', $params);
    }
 

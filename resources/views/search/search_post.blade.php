@@ -25,7 +25,7 @@
                     <!-- fine header -->
 
                     <div class="ibox-content">
-                        @include('partials.post_list_table',['posts' => $category->posts])
+                        @include('partials.post_list_table',['posts' => $posts])
                     </div>
                 </div>
             </div>

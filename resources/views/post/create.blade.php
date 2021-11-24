@@ -7,10 +7,7 @@
 
                     <!-- header del box -->
                     <div class="ibox-title">
-
-                        <!-- Indietro -->
-                        <a href="{{ url()->previous() }}" class="btn btn-w-m btn-primary">Indietro</a>
-
+                        @include('buttons.back')
                     </div>
                     <!-- fine header -->
 
@@ -34,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="d-block">Titolo*</label>
-                                        <input type="text" name="name" id="name" class="form-control mb-2" />
+                                        <input type="text" name="name" id="name" class="form-control mb-2"/>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +39,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="d-block">Tags</label>
-                                        <select id="tags" name="tags[]" class="select_tags form-control" multiple="multiple">
+                                        <select id="tags" name="tags[]" class="select_tags form-control"
+                                                multiple="multiple">
                                             @foreach($tags as $tag)
                                                 <option value="{{$tag->name}}">{{$tag->name}}</option>
                                             @endforeach
@@ -54,7 +52,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Testo*</label>
-                                        <textarea name="desc" id="desc" rows="15" class="form-control mb-2" ></textarea>
+                                        <textarea name="desc" id="desc" rows="15" class="form-control mb-2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -87,32 +85,32 @@
     <script>
         $("#{{$form_name}}").validate({
             rules: {
-                name:{required:true},
-                category_id:{required:true},
-                desc:{required:true}
+                name: {required: true},
+                category_id: {required: true},
+                desc: {required: true}
             },
             messages: {
-                name:{required:'Questo campo è obbligatorio'},
-                category_id:{required:'Questo campo è obbligatorio'},
-                desc:{required:'Questo campo è obbligatorio'}
+                name: {required: 'Questo campo è obbligatorio'},
+                category_id: {required: 'Questo campo è obbligatorio'},
+                desc: {required: 'Questo campo è obbligatorio'}
             },
-            submitHandler: function (form)
-            {
+            submitHandler: function (form) {
                 $.ajax({
                     type: "POST",
                     url: "{{route('post.store')}}",
                     data: $("#{{$form_name}}").serialize(),
                     dataType: "json",
-                    success: function (data)
-                    {
-                        if (data.result === 1)
-                        {
+                    success: function (data) {
+                        if (data.result === 1) {
                             alert(data.msg);
                             $(location).attr('href', data.url);
+                        } else {
+                            alert(data.msg);
                         }
-                        else{ alert( data.msg ); }
                     },
-                    error: function (){ alert("Si è verificato un errore! Riprova!"); }
+                    error: function () {
+                        alert("Si è verificato un errore! Riprova!");
+                    }
                 });
             }
         });

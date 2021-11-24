@@ -7,10 +7,7 @@
 
                <!-- header del box -->
                <div class="ibox-title">
-
-                  <!-- Indietro -->
-                  <a href="{{ url()->previous() }}" class="btn btn-w-m btn-primary">Indietro</a>
-
+                  @include('buttons.back')
                </div>
                <!-- fine header -->
 

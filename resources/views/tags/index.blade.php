@@ -18,8 +18,7 @@
                     <div class="ibox-title" style="padding-right:15px">
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- nuovo post -->
-                                <a href="javascript:void(0)" onclick="get_modal('{{route('tags.create')}}')" class="btn btn-w-m btn-primary">Nuovo Tag</a>
+                                @include('buttons.add_tag')
                             </div>
                         </div>
                     </div>
