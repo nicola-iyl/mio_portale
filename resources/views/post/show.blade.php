@@ -47,7 +47,7 @@
                                 {{$post->name}}
                             </h2>
                         </div>
-                        <p>{{$post->desc}}</p>
+                        <p>{!! $post->desc !!}</p>
 
                         <!-- Gli Script -->
                         @if($post->scripts->count() > 0)
@@ -55,8 +55,10 @@
                                 @foreach($post->scripts as $script)
                                     <div class="ibox-content mb-2">
                                         <a href="{{route('script.delete',['id'=>$script->id])}}" type="button" class="close elimina">&times;</a>
-                                        <p>{{$script->desc}}&nbsp;</p>
-                                        <div><code><pre>{{$script->code}}</pre></code></div>
+                                        <p>{!! $script->desc !!}</p>
+                                        @if($script->code != '')
+                                            <div><code><pre>{{$script->code}}</pre></code></div>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>

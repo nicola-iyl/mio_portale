@@ -16,13 +16,13 @@
                             <label class="d-block">
                                 Descrizione/Titolo
                             </label>
-                            <textarea rows="2" name="desc" id="desc" class="form-control" ></textarea>
+                            <textarea rows="2" name="desc" id="desc" class="form-control summernote" ></textarea>
                         </div>
                         <div class="col-md-12">
                             <label class="d-block">
                                 Codice
                             </label>
-                            <textarea rows="6" name="code" id="code" class="form-control" ></textarea>
+                            <textarea rows="6" name="code" id="code" class="form-control " ></textarea>
                         </div>
                     </div>
                 </div>
@@ -45,6 +45,10 @@
     </div>
 
 </div>
+<script>
+    //per l'editor delle textarea
+    $(document).ready(function(){$('.summernote').summernote({height:160});});
+</script>
 <script>
     $("#{{$form_name}}").validate({
         rules: {

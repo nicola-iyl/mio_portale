@@ -52,7 +52,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Testo*</label>
-                                        <textarea name="desc" id="desc" rows="15" class="form-control mb-2"></textarea>
+                                        <textarea name="desc" id="desc" rows="15" class="form-control summernote mb-2"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -75,6 +75,10 @@
     </div>
 @endsection
 @section('js_script')
+    <script>
+        //per l'editor delle textarea
+        $(document).ready(function(){$('.summernote').summernote({height:400});});
+    </script>
     <!-- per la select multipla -->
     <script>
         $(".select_tags").select2({
