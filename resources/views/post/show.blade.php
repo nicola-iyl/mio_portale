@@ -53,11 +53,23 @@
                         @if($post->scripts->count() > 0)
                             <div class="ibox ">
                                 @foreach($post->scripts as $script)
-                                    <div class="ibox-content mb-2">
+                                    <div class="ibox-content mb-2" style="padding:5px 10px">
                                         <a href="{{route('script.delete',['id'=>$script->id])}}" type="button" class="close elimina">&times;</a>
                                         <p>{!! $script->desc !!}</p>
                                         @if($script->code != '')
-                                            <div><code><pre>{{$script->code}}</pre></code></div>
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#script_{{$script->id}}">
+                                                        <i class="fa fa-angle-double-down"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <div id="script_{{$script->id}}" class="collapse show">
+                                                        <code><pre>{{$script->code}}</pre></code>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endif
                                     </div>
                                 @endforeach
