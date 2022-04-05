@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
    Route::post('/customer',[CustomerController::class,'store'])->name('customer.store');
    Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
    Route::get('/works',[WorkController::class,'index'])->name('works');
+   Route::get('/works/all',[WorkController::class,'all'])->name('works_all');
    Route::get('/work/pdf_ore/{id}',[WorkController::class,'pdfOre'])->name('work.pdf_ore');
    Route::get('/work/create',[WorkController::class,'create'])->name('work.create');
    Route::get('/work/change_status/{work_id}/{value}',[WorkController::class,'changeStatus'])->name('work.change_status');

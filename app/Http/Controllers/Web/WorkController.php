@@ -25,7 +25,7 @@ class WorkController extends Controller
 
    public function all()
    {
-      $works = Work::all();
+      $works = Work::where('id','>',431)->get();
       $title_page = 'Lavori';
       $params = [
          'works'      => $works,
